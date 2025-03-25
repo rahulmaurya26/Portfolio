@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.2/css/all.css">
+    <title>Registration Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 10;
+            padding: 10;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 140vh;
+        }
+
+        .main {
+            transform: translateY(40px);
+            background-color: #fefdfd;
+            border-radius: 15px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            /* margin: 20px; */
+            padding: 20px;
+            width: 800px;
+        }
+
+        .main h2 {
+            color: #4caf50;
+            transform: translateX(220px);
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="password"],
+        select {
+            width: 100%;
+            margin-bottom: 15px;
+            padding: 10px;
+            box-sizing: border-box;
+            border: 1px solid #1b1a1a;
+            border-radius: 5px;
+        }
+
+        button[type="submit"] {
+            padding: 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: #4caf50;
+            color: rgb(9, 9, 9);
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #4caf50;
+        }
+
+        i {
+            color: #f94306;
+            transform: translate(750px, -50px);
+        }
+        .captcha-container {
+            text-align: center;
+            margin-bottom: 15px;
+        }
+        .captcha {
+            font-size: 20px;
+            font-weight: bold;
+            background-color: #e3e3e3;
+            padding: 10px;
+            display: inline-block;
+            border-radius: 5px;
+        }
+        button {
+            padding: 10px;
+            border-radius: 10px;
+            border: none;
+            background-color: #4caf50;
+            color: white;
+            cursor: pointer;
+            width: 100%;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .int{
+            transform: translateY(10px);
+        }
+    </style>
+</head>
+
+<body>
+    <div class="main">
+        <h2>Registration Form</h2>
+        <i class="fas fa-times fa-2x text-danger" style="cursor: pointer;" onclick="closeForm()"></i>
+        <form action="submit.php" method="post">
+            <label for="first">USERNAME:</label>
+            <input type="text" id="first" name="user_name" required />
+
+            <label for="last">Name</label>
+            <input type="text" id="last" name="name" required />
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required />
+
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" title="Password must contain at least one number, 
+                           one alphabet, one symbol, and be at 
+                           least 8 characters long" minlength="8" required />
+
+            <label for="repassword">Re-type Password:</label>
+            <input type="password" id="repassword" name="conform_password" minlength="8" required />
+
+            <label for="mobile">Contact:</label>
+            <input type="text" id="mobile" name="phone_number" maxlength="10" required />
+
+            <label for="mobile">HIGH SCHOOL ROLL NUMBER </label>
+            <input type="text" id="mobile" name="high_school_rollnumber" minlength="5" required />
+
+            <label for="mobile">CITY</label>
+            <input type="text" id="mobile" name="city" required />
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="male">
+                    Male
+                </option>
+                <option value="female">
+                    Female
+                </option>
+                <option value="other">
+                    Other
+                </option>
+            </select>
+            <div class="captcha-container">
+                <p class="captcha" id="captcha-text"></p>
+                <button type="button" onclick="generateCaptcha()">Refresh</button>
+                <input type="text" id="captcha-input" placeholder="Enter CAPTCHA" required class="int" />
+            </div>
+            <button type="submit" onclick="return validateCaptcha()">Submit</button>
+        </form>
+    </div>
+</body>
+<script>
+    function closeForm() {
+        window.close();
+    }
+    let captchaCode = "";
+    function generateCaptcha() {
+        captchaCode = Math.random().toString(36).substring(2, 8).toUpperCase();
+        document.getElementById("captcha-text").innerText = captchaCode;
+    }
+
+    function validateCaptcha() {
+        let userCaptcha = document.getElementById("captcha-input").value.toUpperCase();
+        if (userCaptcha !== captchaCode) {
+            alert("Invalid CAPTCHA. Please try again.");
+            generateCaptcha();
+            return false;
+        }
+        return true;
+    }
+
+    // Generate captcha on page load
+    window.onload = generateCaptcha;
+</script>
+
+</html>
