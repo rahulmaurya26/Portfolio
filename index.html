@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <title>Login-Page</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Poppins", sans-serif;
+        }
+
+        body {
+
+            background: linear-gradient(30870deg, #6580fc, #27b5f2,rgb(238, 120, 120),rgb(247, 203, 9),red),aqua;
+        }
+        .uwrapper {
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 10);
+            min-height: 50vh;
+            width: 450px;
+            border: 2px solid;
+            transform: translate(550px, 50px);
+            background-color: #7663f338;
+            color: rgb(250, 244, 244);
+            border-radius: 20px;
+            padding: 30px 40px;
+
+        }
+
+        .uwrapper h1 {
+            font-size: 36px;
+            text-align: center;
+            transform: translateY(-50px);
+        }
+
+        .uwrapper .ulogin {
+            background: transparent;
+        }
+
+        .ulogin input {
+            height: 45px;
+            width: 325px;
+            margin: 10px;
+            padding: 0px;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-align: center;
+            border-color: #333;
+            transform: translateY(-50px);
+        }
+
+        .ulogin input::placeholder {
+            color: rgb(80, 79, 79);
+        }
+
+        .uremember input {
+            margin: 10px;
+
+        }
+
+        .uwrapper .uremember {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14.5px;
+            margin: -15px 0 15px;
+            margin-top: 5px;
+            transform: translateY(-50px);
+        }
+
+        .uremember label input {
+            margin-right: 3px;
+        }
+
+        .uremember a {
+            color: rgb(252, 3, 3);
+            font-weight: 600;
+            text-decoration: none;
+            justify-content: right;
+        }
+
+        .uremember a:hover {
+            text-decoration: underline;
+        }
+
+        .uwrapper .ubutton {
+            margin: 10px;
+            padding: 1px;
+            width: 95%;
+            height: 45px;
+            background: rgb(249, 248, 248);
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translateY(-50px);
+        }
+
+        .uwrapper .ubutton:hover {
+            background-color: rgb(7, 222, 21);
+        }
+
+        .Ubutton {
+            margin: 10px;
+            padding: 1px;
+            width: 25%;
+            height: 45px;
+            background-color: rgb(104, 212, 234);
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: not-allowed;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translateY(330px);
+
+        }
+
+        .UAbutton {
+            margin: 10px;
+            padding: 1px;
+            width: 25%;
+            height: 45px;
+            background-color: rgb(241, 241, 240);
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translate(170px, 330px);
+        }
+
+        .UAbutton:hover {
+            background-color: rgb(244, 36, 13);
+
+        }
+
+
+        .uwrapper .uregister-link {
+            font-size: 14.5px;
+            text-align: center;
+            margin-top: 10px;
+            transform: translateY(-50px);
+        }
+
+        .uregister-link p a {
+            color: rgb(255, 3, 3);
+            text-decoration: none;
+            font-weight: 600;
+        }
+
+        .uregister-link p a:hover {
+            text-decoration: underline;
+        }
+
+
+
+
+
+        .awrapper {
+            display: none;
+            justify-content: center;
+            align-items: center;
+            box-shadow: 0px 3px 15px rgba(0, 0, 0, 10);
+            min-height: 60vh;
+            width: 450px;
+            border: 2px solid;
+            transform: translate(550px, 50px);
+            background-color: #7663f338;
+            color: rgb(250, 244, 244);
+            border-radius: 20px;
+            padding: 30px 40px;
+        }
+
+        .awrapper h1 {
+            font-size: 36px;
+            text-align: center;
+            transform: translateY(-70px);
+        }
+
+        .awrapper .ulogin {
+            background: transparent;
+
+        }
+
+        .alogin input {
+            height: 45px;
+            width: 325px;
+            margin: 10px;
+            /* padding: 0px; */
+            text-align: center;
+            outline: none;
+            border-radius: 40px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transform: translateY(-50px);
+        }
+
+        .alogin input::placeholder {
+            color: rgb(80, 79, 79);
+        }
+
+        .aremember input {
+            margin: 10px;
+            /* transform: translate(1px,-50px); */
+        }
+
+        .awrapper .aremember {
+            display: flex;
+            font-size: 14.5px;
+            margin: -15px 0 15px;
+            margin-top: 5px;
+            transform: translate(20px, -50px);
+        }
+
+        .aremember label input {
+            margin-right: 3px;
+
+        }
+
+        .aremember a {
+            color: rgb(253, 4, 4);
+            font-weight: 600;
+            text-decoration: none;
+            justify-content: right;
+            transform: translateX(10px);
+        }
+
+        .aremember a:hover {
+            text-decoration: underline;
+        }
+
+        .awrapper .abutton {
+            margin: 10px;
+            padding: 1px;
+            width: 95%;
+            height: 45px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translateY(-60px);
+        }
+
+        .awrapper .abutton:hover {
+            background-color: rgb(54, 228, 54);
+        }
+
+        .AUbutton {
+            margin: 10px;
+            padding: 1px;
+            width: 25%;
+            height: 45px;
+            background: #fff;
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: pointer;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translate(10px, 330px);
+        }
+
+        .Abutton {
+            margin: 10px;
+            padding: 1px;
+            width: 25%;
+            height: 45px;
+            background-color: rgb(204, 253, 100);
+            border: none;
+            outline: none;
+            border-radius: 50px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, .1);
+            cursor: not-allowed;
+            font-size: 16px;
+            color: #333;
+            font-weight: 600;
+            transform: 5s;
+            transform: translate(170px, 330px);
+        }
+
+        .AUbutton:hover {
+            background-color: rgb(254, 15, 163);
+
+        }
+        .loader {
+            width: 50px;
+            aspect-ratio: 1;
+            display: none;
+            animation: spin 4s infinite;
+            transform: translate(760px,-150px);
+        }
+
+        .loader::before,
+        .loader::after {
+            content: "";
+            grid-area: 1/1;
+            border: 8px solid;
+            border-radius: 50%;
+            border-color: red red #0000 #0000;
+            mix-blend-mode: darken;
+            animation: l14 1s infinite linear;
+        }
+
+        .loader::after {
+            border-color: #0000 #0000 blue blue;
+            animation-direction: reverse;
+        }
+
+        @keyframes l14 {
+            100% {
+                transform: rotate(1turn)
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="uwrapper" id="user_id">
+        <form id="uform_id" action="user.php" method="post">
+            <button type="ulogin" class="Ubutton" disabled>USER</button>
+            <button type="button" class="UAbutton" id="first_form">ADMIN</button>
+            <h1>Login</h1>
+            <div class="ulogin">
+                <input type="text" placeholder="Username" name="user_name" required><br>
+                <input type="password" placeholder="password" name="password" required>
+            </div>
+            <div class="uremember">
+                <label><input type="checkbox">Remember Me</input>
+                    <a href="forgetpassword.html" target="_blank">Forget passward</a>
+                </label>
+            </div>
+            <button type="submit" class="ubutton" id="ubutton">Login</button>
+
+            <div class="uregister-link">
+                <p>Don't have an account <a href="registation.html" id="registationid" target="_blank">Register</a></p>
+            </div>
+        </form>
+    </div>
+    <div class="awrapper" id="admin_id">
+        <form id="aform_id" action="admin.php" method="post" target="_blank">
+            <button type="ulogin" class="AUbutton" id="second_form">USER</button>
+            <button type="alogin" class="Abutton" disabled>ADMIN</button>
+            <h1>Login</h1>
+            <div class="alogin">
+                <input type="text" placeholder="Username" name="user_name" required><br>
+                <input type="password" placeholder="passward" name="password" required>
+            </div>
+            <div class="aremember">
+                <label><input type="checkbox">Remember Me</input>
+                    <a href="#" id="aforgetid">Forget passward</a>
+                </label>
+            </div>
+            <button type="submit" class="abutton">Login</button>
+        </form>
+    </div>
+    <div class="loader" id="loader"></div>
+
+    <script>
+        document.getElementById("uform_id").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            document.getElementById("loader").style.display = "grid";
+
+            setTimeout(() => {
+                document.getElementById("loader").style.display = "none";
+                this.submit();
+            }, 3000);
+        });
+    </script>
+    <script>
+        document.getElementById("aform_id").addEventListener("submit", function (event) {
+            event.preventDefault();
+
+            document.getElementById("loader").style.display = "grid";
+
+            setTimeout(() => {
+                document.getElementById("loader").style.display = "none";
+                this.submit();
+            }, 3000);
+        });
+    </script>
+</body>
+<script>
+    document.getElementById("user_id").addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+            event.preventDefault();
+            document.querySelector(".ubutton").click();
+        }
+    });
+</script>
+<script>
+    const userform = document.getElementById('user_id');
+    const first_form = document.getElementById('first_form');
+    const adminform = document.getElementById('admin_id');
+    const second_form = document.getElementById('second_form');
+    first_form.addEventListener('click', function () {
+        userform.style.display = 'none';
+        adminform.style.display = 'flex';
+    });
+    second_form.addEventListener('click', function () {
+        userform.style.display = 'flex';
+        adminform.style.display = 'none';
+    });
+</script>
+
+</html>
